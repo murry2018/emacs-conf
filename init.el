@@ -31,6 +31,12 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;;; # Better Defaults
+;; **Save history**
+(use-package savehist
+  :init
+  (savehist-mode))
+
 ;;; # Infrastructure
 ;; **Autocompletion**
 (use-package company
@@ -87,6 +93,25 @@
 ;; **Show line numbers**
 (global-display-line-numbers-mode t)
 
+;; **Key Stroke Hinting**
+(use-package which-key
+  :ensure t
+  :straight t
+  :init (which-key-mode))
+
+;; **LSP: Language Server Protocol**
+(use-package lsp-mode
+  :ensure t
+  :straight t
+  :init (setq lsp-keymap-prefix "C-c l")
+  :custom (lsp-enable-on-type-formatting nil)
+  :hook ((c-mode . lsp)
+	 (c++-mode . lsp)
+	 (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+(use-package lsp-ui
+  :commands lsp-ui-mode)
+
 ;;; # Languages
 ;; **Common-Lisp**
 (use-package slime
@@ -105,3 +130,8 @@
   (setq slime-company-completion 'fuzzy
 	slime-company-after-completion 'slime-company-just-one-space))
 
+;; **C/C++**
+(use-package ccls
+  :if (executable-find "ccls")
+  :ensure t
+  :straight t)
