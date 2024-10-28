@@ -11,7 +11,6 @@
 (defun ensure-package (package)
   "install package, if not installed"
   (when (not (package-installed-p package))
-    (message "Fuck you !!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     (when (not package-archive-contents)
       (package-refresh-contents))
     (package-install package)))
