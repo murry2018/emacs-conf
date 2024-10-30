@@ -1,13 +1,13 @@
 ;; functions:
 ;; - custom-install-packages
-;; - custom-ensure-package (for internal use)
-;; - init-for (for internal use)
+;; - custom-ensure-package
+;; - init-for
 
 ;;; initialize melpa
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
-;;; package-related definitions
+;; 
 (defvar *required-packages*
   '(company
     flycheck
@@ -16,15 +16,32 @@
     slime
     slime-company
     paredit
-    modus-themes))
+    markdown-mode))
+(defvar *additional-packages*
+  '(modus-themes
+    magit))
 
-(defun custom-install-packages ()
-  (interactive)
+(defun custom-install-packages (opt)
+  (interactive
+   (list (completing-read
+          "Install option[default: minimal] "
+          '("minimal" "all")
+          nil
+          t
+          ""
+          t
+          "minimal")))
   (when (not package-archive-contents)
     (package-refresh-contents))
+  (message "Installing %s packages" opt)
   (mapc 'package-install
-	*required-packages*))
+	    *required-packages*)
+  (when (string-equal-ignore-case opt "all")
+    (mapc 'package-install
+          *additional-packages*))
+  t)
 
+;;; package-related definitions
 (defun custom-ensure-package (package)
   "install package, if not installed"
   (when (not (package-installed-p package))

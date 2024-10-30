@@ -15,9 +15,13 @@
 (require 'custom-paredit)
 ;; tramp
 (require 'custom-tramp)
+;; document modes (markdown, org-mode)
+(require 'custom-document-modes)
 
 ;; machine dependent configs
 ;; these functions are available:
+;; - init-for (\custom-packages)
+;; - custom-ensure-package (\custom-packages)
 ;; - custom-install-packages (\custom-packages)
 ;; - custom-add-slime-filename-translation (\custom-slime)
 ;; - custom-add-tramp-completion (\custom-tramp)
