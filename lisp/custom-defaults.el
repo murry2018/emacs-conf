@@ -1,5 +1,9 @@
-;;; Comment:
-;; This configurations are based on emacs version 29 or later
+;;; initailize `customize'
+(setopt custom-file
+	(expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 
 ;;; visual options
 
@@ -9,7 +13,7 @@
 (when (fboundp 'menu-bar-mode) (tool-bar-mode -1))
 
 ;;;; frame background (for dark background terminal)
-(setq frame-background-mode 'dark)
+(setopt frame-background-mode 'dark)
 ;; You can uncomment the below line if you need debugging. 
 ;; (debug-on-variable-change 'frame-background-mode)
 (mapc 'frame-set-background-mode (frame-list))
@@ -26,8 +30,11 @@
 
 ;;; modes
 
-;;;; electric-pair-mode
-;; auto-close parenthesis :yes
+;;;; ibuffer :yes
+(keymap-global-set "C-x C-b" 'ibuffer)
+
+;;;; electric-pair-mode :yes
+;; auto-close parenthesis
 (electric-pair-mode t)
 
 ;;;; display-line-numbers-mode :yes
@@ -51,7 +58,7 @@
 (savehist-mode t)
 
 ;;;; global-subword-mode :yes
-;; Let's ride on CamelCase words
+;; ride on CamelCase words
 (global-subword-mode t)
 
 ;;;; blink-cursor-mode :no
@@ -97,6 +104,9 @@
 
     ;; Show directory first in dired
     ls-lisp-dirs-first t
+
+    ;; flash screen instead of beeping
+    visible-bell t
     )
 
 ;; Eldoc for IELM
