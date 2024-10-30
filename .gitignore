@@ -1,0 +1,15 @@
+# hide emacs temporary files
+*~
+# hide hidden files
+.*
+# hide local-dependent customizations
+custom.el
+lisp/custom-site-config.el
+# hide automatically generated files
+elpa
+recentf
+places
+tramp
+history
+eshell
+server
