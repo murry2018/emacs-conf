@@ -2,27 +2,27 @@
       load-path)
 
 ;; load packages and definitions
-(require 'custom-packages)
+(require 'pref-packages)
 ;; better defaults
-(require 'custom-defaults)
+(require 'pref-defaults)
 ;; setup basic packages(company, flycheck, ace-window, which-key)
-(require 'custom-setup-basics)
+(require 'pref-setup-basics)
 ;; ivy(minibuffer completion)
-(require 'custom-ivy)
+(require 'pref-ivy)
 ;; slime
-(require 'custom-slime)
+(require 'pref-slime)
 ;; paredit
-(require 'custom-paredit)
+(require 'pref-paredit)
 ;; tramp
-(require 'custom-tramp)
+(require 'pref-tramp)
 ;; document modes (markdown, org-mode)
-(require 'custom-document-modes)
+(require 'pref-document-modes)
 
 ;; machine dependent configs
 ;; these functions are available:
-;; - init-for (\custom-packages)
-;; - custom-ensure-package (\custom-packages)
-;; - custom-install-packages (\custom-packages)
-;; - custom-add-slime-filename-translation (\custom-slime)
-;; - custom-add-tramp-completion (\custom-tramp)
-(require 'custom-site-config nil t)
+;; - init-for (\pref-packages)
+;; - pref-ensure-package (\pref-packages)
+;; - pref-install-packages (\pref-packages)
+;; - pref-add-slime-filename-translation (\pref-slime)
+;; - pref-add-tramp-completion (\pref-tramp)
+(require 'pref-site-config nil t)

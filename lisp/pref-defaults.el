@@ -4,7 +4,6 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-
 ;;; visual options
 
 ;;;; turn off xxx-bars
@@ -65,6 +64,10 @@
 ;; Don't Blink
 (blink-cursor-mode -1)
 
+;;;; dired-extra :yes
+;; enable dired-do-* commands
+(require 'dired-x)
+
 ;;; variables
 (setopt
     ;; ask y/n instead of yes/no
@@ -112,4 +115,4 @@
 ;; Eldoc for IELM
 (add-hook 'ielm-mode-hook 'eldoc-mode)
 
-(provide 'custom-defaults)
+(provide 'pref-defaults)

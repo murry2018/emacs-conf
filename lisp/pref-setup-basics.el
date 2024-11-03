@@ -1,4 +1,4 @@
-(require 'custom-packages)
+(require 'pref-packages)
 
 ;; company
 (init-for company
@@ -21,4 +21,4 @@
 (init-for which-key
   (which-key-mode))
 
-(provide 'custom-setup-basics)
+(provide 'pref-setup-basics)

@@ -1,6 +1,6 @@
 ;; functions:
-;; - custom-install-packages
-;; - custom-ensure-package
+;; - pref-install-packages
+;; - pref-ensure-package
 ;; - init-for
 
 ;;; initialize melpa
@@ -21,7 +21,7 @@
   '(modus-themes
     magit))
 
-(defun custom-install-packages (opt)
+(defun pref-install-packages (opt)
   (interactive
    (list (completing-read
           "Install option[default: minimal] "
@@ -42,7 +42,7 @@
   t)
 
 ;;; package-related definitions
-(defun custom-ensure-package (package)
+(defun pref-ensure-package (package)
   "install package, if not installed"
   (when (not (package-installed-p package))
     (when (not package-archive-contents)
@@ -59,4 +59,4 @@ If given package is not installed, do nothing."
 		   ,@body)))))
 (put 'init-for 'lisp-indent-function 1)
 
-(provide 'custom-packages)
+(provide 'pref-packages)

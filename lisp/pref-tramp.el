@@ -1,5 +1,5 @@
 ;; functions:
-;; - custom-add-tramp-completion
+;; - pref-add-tramp-completion
 
 (setopt tramp-default-method
   (if (eq system-type 'windows-nt)
@@ -10,13 +10,13 @@
 
 (defvar *tramp-completion-list*
   '())
-(defun custom--tramp-completion-function (whatever)
+(defun pref--tramp-completion-function (whatever)
   *tramp-completion-list*)
 (add-to-list 'tramp-completion-function-alist
   `(,tramp-default-method
-    (custom--tramp-completion-function "")))
-(defun custom-add-tramp-completion (username remote)
+    (pref--tramp-completion-function "")))
+(defun pref-add-tramp-completion (username remote)
   (add-to-list '*tramp-completion-list*
     (list username remote)))
 
-(provide 'custom-tramp)
+(provide 'pref-tramp)
