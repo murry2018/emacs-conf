@@ -12,9 +12,10 @@
   '())
 (defun pref--tramp-completion-function (whatever)
   *tramp-completion-list*)
-(add-to-list 'tramp-completion-function-alist
-  `(,tramp-default-method
-    (pref--tramp-completion-function "")))
+(init-for tramp
+  (require 'tramp)
+  (tramp-set-completion-function tramp-default-method
+    `((pref--tramp-completion-function ""))))
 (defun pref-add-tramp-completion (username remote)
   (add-to-list '*tramp-completion-list*
     (list username remote)))

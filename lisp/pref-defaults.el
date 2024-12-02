@@ -12,10 +12,11 @@
 (when (fboundp 'menu-bar-mode) (tool-bar-mode -1))
 
 ;;;; frame background (for dark background terminal)
-(setopt frame-background-mode 'dark)
-;; You can uncomment the below line if you need debugging. 
-;; (debug-on-variable-change 'frame-background-mode)
-(mapc 'frame-set-background-mode (frame-list))
+(when (not (display-graphic-p))
+  (setopt frame-background-mode 'dark)
+  ;; You can uncomment the below line if you need debugging. 
+  ;; (debug-on-variable-change 'frame-background-mode)
+  (mapc 'frame-set-background-mode (frame-list)))
 
 ;;; Elisp appearance
 (put 'setopt 'lisp-indent-function 1)
