@@ -10,7 +10,8 @@
 (require 'org-tempo)
 (defun pref--org-mode-init ()
   (visual-line-mode -1)
-  (electric-pair-mode -1))
+  (electric-pair-mode -1)
+  (display-line-numbers-mode -1))
 (add-hook 'org-mode-hook 'pref--org-mode-init)
 
 (provide 'pref-document-modes)

@@ -13,12 +13,15 @@
     flycheck
     ace-window
     which-key
-    slime
-    slime-company
+    ivy
+    swiper
+    counsel
     paredit
     markdown-mode))
 (defvar *additional-packages*
   '(modus-themes
+    slime
+    slime-company
     magit))
 
 (defun pref-install-packages (opt)
