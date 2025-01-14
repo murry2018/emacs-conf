@@ -13,7 +13,8 @@
   (setopt
     inferior-lisp-program "sbcl"
     slime-company-completion 'fuzzy
-    slime-company-after-completion 'slime-company-just-one-space))
+    slime-company-after-completion 'slime-company-just-one-space
+    slime-enable-evaluate-in-emacs t))
   
 (defun pref-add-slime-filename-translation (machine-instance host username)
   (when (require 'slime-tramp nil t)
