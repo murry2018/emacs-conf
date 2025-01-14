@@ -17,6 +17,8 @@
 (require 'pref-tramp)
 ;; document modes (markdown, org-mode)
 (require 'pref-document-modes)
+;; C/C++ modes (eglot)
+(require 'pref-cc-modes)
 
 ;; machine dependent configs
 ;; these functions are available:

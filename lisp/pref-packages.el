@@ -29,12 +29,15 @@
     slime-company
     magit
     rg))
+(defvar *cc-packages*
+  '(cmake-mode
+    eglot-inactive-regions))
 
 (defun pref-install-packages (opt)
   (interactive
    (list (completing-read
           "Install option[default: minimal] "
-          '("minimal" "all")
+          '("minimal" "all" "c-lang")
           nil
           t
           ""
@@ -45,6 +48,10 @@
   (message "Installing %s packages" opt)
   (mapc 'package-install
 	    *required-packages*)
+  (when (or (string-equal-ignore-case opt "all")
+            (string-equal-ignore-case opt "c-lang"))
+    (mapc 'package-install
+          *cc-packages*))
   (when (string-equal-ignore-case opt "all")
     (mapc 'package-install
           *additional-packages*))
