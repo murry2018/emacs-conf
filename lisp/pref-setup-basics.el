@@ -11,6 +11,14 @@
     flycheck-emacs-lisp-load-path 'inherit
     flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
+;; avy
+(init-for avy
+  (keymap-global-set "C-:" #'avy-goto-char))
+
+;; smartparens
+(init-for smartparens-mode
+  (add-hook 'c-mode-hook #'smartparens-mode))
+
 ;; ace-window
 (init-for ace-window
   (keymap-global-set "M-o" 'ace-window))

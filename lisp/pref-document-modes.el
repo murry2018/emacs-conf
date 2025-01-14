@@ -14,4 +14,11 @@
   (display-line-numbers-mode -1))
 (add-hook 'org-mode-hook 'pref--org-mode-init)
 
+;; json-mode
+(defun pref--json-mode-init ()
+  (setopt indent-tabs-mode nil
+          tab-width 2
+          js-indent-level 2))
+(add-hook 'json-mode-hook 'pref--json-mode-init)
+
 (provide 'pref-document-modes)

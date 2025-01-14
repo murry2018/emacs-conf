@@ -40,6 +40,18 @@
 ;;;; display-line-numbers-mode :yes
 (global-display-line-numbers-mode t)
 
+;; Do not display line numbers on these mode
+(defun pref--disable-line-numbers ()
+  (display-line-numbers-mode -1))
+(add-hook 'eshell-mode-hook 'pref--disable-line-numbers)
+(add-hook 'compilation-mode 'pref--disable-line-numbers)
+(eval-after-load 'imenu-list
+  '(add-hook 'imenu-list-mode-hook 'pref--disable-line-numbers))
+(eval-after-load 'treemacs
+  '(add-hook 'treemacs-mode-hook 'pref--disable-line-numbers))
+(eval-after-load 'nodejs-repl
+  '(add-hook 'nodejs-repl-mode-hook 'pref--disable-line-numbers))
+
 ;;;; show-paren-mode :yes
 ;; highlight matching parens
 (show-paren-mode t)

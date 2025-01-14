@@ -9,20 +9,26 @@
 
 ;; 
 (defvar *required-packages*
-  '(company
+  '(s
+    company
     flycheck
     ace-window
     which-key
+    avy
     ivy
     swiper
     counsel
     paredit
-    markdown-mode))
+    markdown-mode
+    json-mode
+    smartparens
+    imenu-list))
 (defvar *additional-packages*
   '(modus-themes
     slime
     slime-company
-    magit))
+    magit
+    rg))
 
 (defun pref-install-packages (opt)
   (interactive

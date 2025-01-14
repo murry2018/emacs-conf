@@ -8,7 +8,9 @@
   (keymap-set ivy-occur-grep-mode-map "C-p" 'previous-error-no-select))
 (setopt ivy-use-virtual-buffers 'recentf
         enable-recursive-minibuffers t
-        ivy-magic-tilde nil)
+        ivy-magic-tilde nil
+        ;; Do not close minibuffer when del pressed with empty minibuffer
+        ivy-on-del-error-function #'ignore)
 
 (init-for counsel
   (counsel-mode t))
