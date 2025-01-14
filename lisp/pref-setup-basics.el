@@ -16,8 +16,11 @@
   (keymap-global-set "C-:" #'avy-goto-char))
 
 ;; smartparens
+(defun pref--c-no-electric-pair ()
+  (electric-pair-mode -1))
 (init-for smartparens-mode
-  (add-hook 'c-mode-hook #'smartparens-mode))
+  (add-hook 'c-mode-hook #'smartparens-mode)
+  (add-hook 'c-mode-hook #'pref--c-no-electric-pair))
 
 ;; ace-window
 (init-for ace-window
@@ -28,5 +31,9 @@
 ;; which-key
 (init-for which-key
   (which-key-mode))
+
+;; imenu-list
+(init-for imenu-list
+  (keymap-global-set "C-'" #'imenu-list-smart-toggle))
 
 (provide 'pref-setup-basics)

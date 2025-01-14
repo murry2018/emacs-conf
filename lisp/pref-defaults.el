@@ -46,7 +46,7 @@
 (add-hook 'eshell-mode-hook 'pref--disable-line-numbers)
 (add-hook 'compilation-mode 'pref--disable-line-numbers)
 (eval-after-load 'imenu-list
-  '(add-hook 'imenu-list-mode-hook 'pref--disable-line-numbers))
+  '(add-hook 'imenu-list-major-mode-hook 'pref--disable-line-numbers))
 (eval-after-load 'treemacs
   '(add-hook 'treemacs-mode-hook 'pref--disable-line-numbers))
 (eval-after-load 'nodejs-repl
