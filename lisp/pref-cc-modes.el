@@ -9,6 +9,7 @@
              '("k&r"
                (c-basic-offset . 4)
                (c-offsets-alist
+                (cpp-macro . 0)
                 (arglist-close . c-lineup-close-paren))))
 (setopt c-default-style "pref-c")
 
