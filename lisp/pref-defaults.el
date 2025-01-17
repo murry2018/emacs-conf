@@ -6,6 +6,10 @@
 
 ;;; visual options
 
+;;;; Set fill-column and turn indicator on
+(setopt fill-column 80)                 ; default: 72
+(global-display-fill-column-indicator-mode)
+
 ;;;; turn off xxx-bars
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (when (fboundp 'menu-bar-mode) (scroll-bar-mode -1))
@@ -85,10 +89,6 @@
 (setopt
     ;; ask y/n instead of yes/no
     use-short-answers t
-    
-    ;; fill-paragraph width
-    ;; It affects M-q(`fill-paragraph')
-    fill-column 80
     
     ;; tab width = 4
     tab-width 4

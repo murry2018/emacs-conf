@@ -4,6 +4,14 @@
 (add-hook 'c-mode-hook #'eglot-ensure)
 (add-hook 'c++-mode-hook #'eglot-ensure)
 
+;; Customize C style based on k&r and set it as the default.
+(c-add-style "pref-c"
+             '("k&r"
+               (c-basic-offset . 4)
+               (c-offsets-alist
+                (arglist-close . c-lineup-close-paren))))
+(setopt c-default-style "pref-c")
+
 ;; eglot-inactive-regions
 ;; Eglot inactive regions doesn't loaded properly on startup,
 ;; hence this dirty hack.
