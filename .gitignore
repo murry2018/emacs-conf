@@ -4,7 +4,7 @@
 .*
 # hide local-dependent customizations
 custom.el
-lisp/custom-site-config.el
+lisp/pref-site-config.el
 # hide automatically generated files
 elpa
 recentf
@@ -13,3 +13,6 @@ tramp
 history
 eshell
 server
+projects
+eln-cache
+transient

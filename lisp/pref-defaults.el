@@ -49,12 +49,20 @@
   (display-line-numbers-mode -1))
 (add-hook 'eshell-mode-hook 'pref--disable-line-numbers)
 (add-hook 'compilation-mode 'pref--disable-line-numbers)
-(eval-after-load 'imenu-list
-  '(add-hook 'imenu-list-major-mode-hook 'pref--disable-line-numbers))
-(eval-after-load 'treemacs
-  '(add-hook 'treemacs-mode-hook 'pref--disable-line-numbers))
-(eval-after-load 'nodejs-repl
-  '(add-hook 'nodejs-repl-mode-hook 'pref--disable-line-numbers))
+(defvar *optional-disable-line-numbers-hook-alist*
+  '((rg             . rg-mode-hook)
+    (imenu-list     . imenu-list-major-mode-hook)
+    (treemacs       . treemacs-mode-hook)
+    (nodejs-repl    . nodejs-repl-mode-hook)))
+
+(defun pref--add-hook-disable-line-numbers (package-hook-assoc)
+  (let ((package (car package-hook-assoc))
+        (hook (cdr package-hook-assoc)))
+    (eval-after-load package
+      `(add-hook ',hook #'pref--disable-line-numbers))))
+
+(mapc #'pref--add-hook-disable-line-numbers
+      *optional-disable-line-numbers-hook-alist*)
 
 ;;;; show-paren-mode :yes
 ;; highlight matching parens
