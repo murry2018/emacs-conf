@@ -32,12 +32,17 @@
 (defvar *cc-packages*
   '(cmake-mode
     eglot-inactive-regions))
+(defvar *posframe-packages*
+  '(ivy-posframe
+    which-key-posframe
+    eldoc-box
+    flycheck-posframe))
 
 (defun pref-install-packages (opt)
   (interactive
    (list (completing-read
           "Install option[default: minimal] "
-          '("minimal" "all" "c-lang")
+          '("minimal" "all" "c-lang" "posframe")
           nil
           t
           ""
@@ -52,6 +57,10 @@
             (string-equal-ignore-case opt "c-lang"))
     (mapc 'package-install
           *cc-packages*))
+  (when (or (string-equal-ignore-case opt "all")
+            (string-equal-ignore-case opt "posframe"))
+    (mapc 'package-install
+          *posframe-packages*))
   (when (string-equal-ignore-case opt "all")
     (mapc 'package-install
           *additional-packages*))

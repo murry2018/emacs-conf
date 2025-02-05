@@ -9,6 +9,8 @@
 (require 'pref-setup-basics)
 ;; ivy(minibuffer completion)
 (require 'pref-ivy)
+;; posframe
+(require 'pref-posframe)
 ;; slime
 (require 'pref-slime)
 ;; paredit
