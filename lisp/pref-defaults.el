@@ -10,10 +10,9 @@
 (setopt fill-column 80)                 ; default: 72
 (global-display-fill-column-indicator-mode)
 
-;;;; turn off xxx-bars
-(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(when (fboundp 'menu-bar-mode) (scroll-bar-mode -1))
-(when (fboundp 'menu-bar-mode) (tool-bar-mode -1))
+;;;; turn off scrollbar and toolbar
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 
 ;;;; frame background (for dark background terminal)
 (when (not (display-graphic-p))
@@ -41,28 +40,18 @@
 ;; auto-close parenthesis
 (electric-pair-mode t)
 
-;;;; display-line-numbers-mode :yes
-(global-display-line-numbers-mode t)
+;;;; display-line-numbers-mode :only on file-backed buffers
+(defun pref--enable-line-numbers ()
+  "Turn on `display-line-numbers-mode' only when the buffer is
+visiting a file"
+  (when buffer-file-name
+    (display-line-numbers-mode 1)))
 
-;; Do not display line numbers on these mode
-(defun pref--disable-line-numbers ()
-  (display-line-numbers-mode -1))
-(add-hook 'eshell-mode-hook 'pref--disable-line-numbers)
-(add-hook 'compilation-mode 'pref--disable-line-numbers)
-(defvar *optional-disable-line-numbers-hook-alist*
-  '((rg             . rg-mode-hook)
-    (imenu-list     . imenu-list-major-mode-hook)
-    (treemacs       . treemacs-mode-hook)
-    (nodejs-repl    . nodejs-repl-mode-hook)))
-
-(defun pref--add-hook-disable-line-numbers (package-hook-assoc)
-  (let ((package (car package-hook-assoc))
-        (hook (cdr package-hook-assoc)))
-    (eval-after-load package
-      `(add-hook ',hook #'pref--disable-line-numbers))))
-
-(mapc #'pref--add-hook-disable-line-numbers
-      *optional-disable-line-numbers-hook-alist*)
+(add-hook 'after-change-major-mode-hook
+  ;; "Is there an Emacs hook that runs after every buffer is created?"
+  ;; "Unfortunately, no"
+  ;; - https://stackoverflow.com/a/7900156
+  #'pref--enable-line-numbers)
 
 ;;;; show-paren-mode :yes
 ;; highlight matching parens
