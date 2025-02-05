@@ -63,7 +63,7 @@ doesn't respond to that, it sends SIGKILL to the process. If the
 process is already terminated, it does nothing.
 
 When VERBOSE is non-nil, it tells what it's doing. Its default
-value is nil, but when EX:SH-START is called interactively, its
+value is nil, but when EX:SH-SHUTDOWN is called interactively, its
 value is t."
   (interactive '(t))
   (when (process-live-p +ex--proc+)
