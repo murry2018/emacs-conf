@@ -19,6 +19,8 @@
 (require 'pref-document-modes)
 ;; C/C++ modes (eglot)
 (require 'pref-cc-modes)
+;; Go modes (eglot + gopls)
+(require 'pref-go-modes)
 
 ;; machine dependent configs
 ;; these functions are available:
