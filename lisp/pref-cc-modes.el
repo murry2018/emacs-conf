@@ -1,8 +1,10 @@
 (require 'pref-packages)
 
 ;; Enable eglot (default: clangd)
-(add-hook 'c-mode-hook #'eglot-ensure)
-(add-hook 'c++-mode-hook #'eglot-ensure)
+(when (or (executable-find "clangd")
+          (executable-find "ccls"))
+  (add-hook 'c-mode-hook #'eglot-ensure)
+  (add-hook 'c++-mode-hook #'eglot-ensure))
 
 ;; Customize C style based on k&r and set it as the default.
 (c-add-style "pref-c"
