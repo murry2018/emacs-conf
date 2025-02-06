@@ -14,6 +14,24 @@
   (display-line-numbers-mode -1))
 (add-hook 'org-mode-hook 'pref--org-mode-init)
 
+(defun pref--remove-recur (elem seq test)
+  " remove ELEM in SEQ recursively
+
+e.g.
+(remove-recur 1 '(1 2 3 (6 7 8 1 2 3) 1 2 3) #'=)
+; => (2 3 (6 7 8 2 3) 2 3)"
+  (cl-labels ((rec (acc e)
+                (if (listp e)
+                    (cons (pref--remove-recur elem e test) acc)
+                  (if (funcall test e elem) acc (cons e acc)))))
+    (reverse (cl-reduce #'rec seq :initial-value nil))))
+
+(defun pref--disable-in-file-completion ()
+  (require 'company)
+  (setq-local company-backends
+        (pref--remove-recur 'company-dabbrev company-backends #'eq)))
+(add-hook 'org-mode-hook #'pref--disable-in-file-completion)
+
 ;; json-mode
 (defun pref--json-mode-init ()
   (setopt indent-tabs-mode nil
