@@ -36,7 +36,7 @@
   '(ivy-posframe
     which-key-posframe
     eldoc-box
-    flycheck-posframe))
+    flycheck-popup-tip))
 
 (defun pref-install-packages (opt)
   (interactive

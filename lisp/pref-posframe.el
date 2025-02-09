@@ -6,9 +6,9 @@
   (which-key-posframe-mode 1))
 (init-for eldoc-box
   (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t))
-(init-for flycheck-posframe
+(init-for flycheck-popup-tip
   (with-eval-after-load 'flycheck
-    (require 'flycheck-posframe)
+    (require 'flycheck-popup-tip)
     (add-hook 'flycheck-mode-hook #'flycheck-popup-tip-mode)))
 
 (provide 'pref-posframe)
