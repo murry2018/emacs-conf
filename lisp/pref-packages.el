@@ -84,4 +84,8 @@ If given package is not installed, do nothing."
 		   ,@body)))))
 (put 'init-for 'lisp-indent-function 1)
 
+(defmacro this-is-comment (&rest comment)
+  ;; do nothing
+  )
+
 (provide 'pref-packages)
