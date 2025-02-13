@@ -3,6 +3,8 @@
 ;; markdown-mode
 (init-for markdown-mode
   (autoload 'gfm-mode "markdown-mode")
+  (when (package-installed-p 'valign)
+    (keymap-set 'markdown-mode-map "C-c g a" #'valign-table))
   (add-to-list 'auto-mode-alist
     '("README\\.md\\'" . gfm-mode)))
 
@@ -11,7 +13,10 @@
 (defun pref--org-mode-init ()
   (visual-line-mode -1)
   (electric-pair-mode -1)
-  (display-line-numbers-mode -1))
+  (display-line-numbers-mode -1)
+  (org-indent-mode)
+  (when (package-installed-p 'valign)
+    (keymap-set 'markdown-mode-map "C-c g a" #'valign-table)))
 (add-hook 'org-mode-hook 'pref--org-mode-init)
 
 (defun pref--remove-recur (elem seq test)

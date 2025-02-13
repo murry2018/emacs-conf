@@ -19,7 +19,7 @@
 (require 'pref-paredit)
 ;; tramp
 (require 'pref-tramp)
-;; document modes (markdown, org-mode)
+;; document modes (markdown, org-mode, json-mode)
 (require 'pref-document-modes)
 ;; C/C++ modes (eglot)
 (require 'pref-cc-modes)

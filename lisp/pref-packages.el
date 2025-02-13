@@ -29,7 +29,8 @@
     slime
     slime-company
     magit
-    rg))
+    rg
+    valign))
 (defvar *cc-packages*
   '(cmake-mode
     eglot-inactive-regions))
