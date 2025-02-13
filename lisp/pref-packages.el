@@ -25,6 +25,7 @@
     imenu-list))
 (defvar *additional-packages*
   '(modus-themes
+    color-theme-sanityinc-tomorrow
     slime
     slime-company
     magit

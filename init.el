@@ -9,6 +9,8 @@
 (require 'pref-setup-basics)
 ;; ivy(minibuffer completion)
 (require 'pref-ivy)
+;; themes
+(require 'pref-themes)
 ;; posframe
 (require 'pref-posframe)
 ;; slime
