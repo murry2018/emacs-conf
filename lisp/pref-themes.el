@@ -1,14 +1,14 @@
 (defun pref-light-theme ()
   (interactive)
   (mapcan #'disable-theme custom-enabled-themes)
-  (if (require 'modus-themes "" t)
+  (if (require 'modus-themes nil t)
       (load-theme 'modus-operandi-tinted)
     (load-theme 'tango)))
 
 (defun pref-dark-theme ()
   (interactive)
   (mapcan #'disable-theme custom-enabled-themes)
-  (if (require 'color-theme-sanityinc-tomorrow "" t)
+  (if (require 'color-theme-sanityinc-tomorrow nil t)
       (progn 
         (load-theme 'sanityinc-tomorrow-night)
         (pref--postprocess-tomorrow-dark))

@@ -4,7 +4,8 @@
 (init-for markdown-mode
   (autoload 'gfm-mode "markdown-mode")
   (when (package-installed-p 'valign)
-    (keymap-set 'markdown-mode-map "C-c g a" #'valign-table))
+    (require 'markdown-mode)
+    (keymap-set markdown-mode-map "C-c g a" #'valign-table))
   (add-to-list 'auto-mode-alist
     '("README\\.md\\'" . gfm-mode)))
 
@@ -16,7 +17,7 @@
   (display-line-numbers-mode -1)
   (org-indent-mode)
   (when (package-installed-p 'valign)
-    (keymap-set 'markdown-mode-map "C-c g a" #'valign-table)))
+    (keymap-set org-mode-map "C-c g a" #'valign-table)))
 (add-hook 'org-mode-hook 'pref--org-mode-init)
 
 (defun pref--remove-recur (elem seq test)
