@@ -25,6 +25,8 @@
 (require 'pref-cc-modes)
 ;; Go modes (eglot + gopls)
 (require 'pref-go-modes)
+;; WSL setting
+(require 'pref-wsl)
 
 ;; machine dependent configs
 ;; these functions are available:
